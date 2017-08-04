@@ -15,7 +15,7 @@
 
 #define MAXBUF 65536
 
-void udp_broadcast_client() {
+void udp_broadcast_client(const char *target, const char *message) {
     int sock, status, buflen, sinlen;
     char buffer[MAXBUF];
     struct sockaddr_in sock_in;
@@ -43,11 +43,11 @@ void udp_broadcast_client() {
     */
 
 //    sock_in.sin_addr.s_addr = htonl(-1); /* send message to 255.255.255.255 */
-    sock_in.sin_addr.s_addr = inet_addr("192.168.3.255");
+    sock_in.sin_addr.s_addr = inet_addr(target);
     sock_in.sin_port = htons(10111); /* port number */
     sock_in.sin_family = PF_INET;
 
-    sprintf(buffer, "Ciao");
+    sprintf(buffer,"%s", message);
     buflen = strlen(buffer);
     status = sendto(sock, buffer, buflen, 0, (struct sockaddr *) &sock_in, sinlen);
     LOGD("sendto Status = %d\n", status);

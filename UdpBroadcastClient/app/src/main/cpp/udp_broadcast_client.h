@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-void udp_broadcast_client();
+void udp_broadcast_client(const char *target, const char *message);
 
 #ifdef __cplusplus
 }

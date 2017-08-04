@@ -37,8 +37,10 @@ void send_udp_broadcast() {
 
     buflen = MAXBUF;
     memset(buffer, 0, buflen);
-    status = recvfrom(sock, buffer, buflen, 0, (struct sockaddr *) &sock_in, &sinlen);
-    LOGD("Receive Status = %d, Message = %s", status, buffer);
-    shutdown(sock, 2);
-    close(sock);
+    while (1) {
+        status = recvfrom(sock, buffer, buflen, 0, (struct sockaddr *) &sock_in, &sinlen);
+        LOGD("Receive Status = %d, Message = %s", status, buffer);
+    }
+//    shutdown(sock, 2);
+//    close(sock);
 }
