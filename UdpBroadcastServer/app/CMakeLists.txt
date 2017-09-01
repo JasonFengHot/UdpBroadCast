@@ -17,7 +17,7 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/native-lib.cpp
+             src/main/cpp/native-lib.c
              src/main/cpp/udp_broadcast.c
              src/main/cpp/ismartv_log.c )
 

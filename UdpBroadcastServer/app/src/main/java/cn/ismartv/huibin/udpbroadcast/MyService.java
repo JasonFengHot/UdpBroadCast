@@ -24,6 +24,7 @@ public class MyService extends Service {
         new Thread(){
             @Override
             public void run() {
+
                 startUdpBroadcastServer();
             }
         }.start();
